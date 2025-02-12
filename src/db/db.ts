@@ -19,6 +19,12 @@ export function getPool() {
   if (pool) {
     return pool;
   }
-  pool = new Pool();
+  pool = new Pool({
+    max: 20,
+    ssl: {
+      rejectUnauthorized: false,
+    },
+  });
+
   return pool;
 }

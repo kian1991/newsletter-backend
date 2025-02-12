@@ -3,7 +3,7 @@ import { Newsletter, Subscriber } from '../src/types';
 import { getClient } from '../src/db/db';
 import { QueryConfig } from 'pg';
 
-const NUMBER_SUBSCRIBERS = 10_000;
+const NUMBER_SUBSCRIBERS = 4_000;
 
 const CATEGORIES = [
   'Gaming',
