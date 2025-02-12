@@ -1,6 +1,6 @@
 import { Hono } from 'hono';
 import { subscriber } from './routes/subscriber';
-import { serve } from '@hono/node-server';
+import { ap } from '@faker-js/faker/dist/airline-D6ksJFwG';
 
 const app = new Hono();
 
@@ -11,9 +11,7 @@ app.get('/', (c) => {
   return c.text('Hello Hono!');
 });
 
-serve({
+export default {
   fetch: app.fetch,
   port: 8080,
-});
-
-export default app;
+};
