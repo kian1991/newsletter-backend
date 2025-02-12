@@ -8,3 +8,4 @@ database/pgadmin-data/
 
 .env
 app/
+app

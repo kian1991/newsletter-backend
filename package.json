@@ -3,7 +3,7 @@
   "name": "newsletter-backend",
   "scripts": {
     "dev": "bun run --hot src/index.ts",
-    "build": "npx -y bun build src/index.ts --target node --outdir app"
+    "build": "npx -y bun build src/index.ts --target bun  --compile --outfile app"
   },
   "dependencies": {
     "@faker-js/faker": "^9.4.0",
