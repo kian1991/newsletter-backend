@@ -7,7 +7,11 @@ export function getClient() {
   if (client) {
     return client;
   }
-  client = new Client();
+  client = new Client({
+    ssl: {
+      rejectUnauthorized: false,
+    },
+  });
   return client;
 }
 

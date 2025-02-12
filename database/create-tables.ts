@@ -1,3 +1,10 @@
+import { getClient } from '../src/db/db';
+
+const runner = async () => {
+  const db = getClient();
+  await db.connect();
+
+  await db.query(`
 DROP TABLE IF EXISTS subscriber_newsletter;
 DROP TABLE IF EXISTS subscriber;
 DROP TABLE IF EXISTS newsletter;
@@ -27,4 +34,8 @@ CREATE TABLE "subscriber_newsletter" (
   "subscriber" INTEGER NOT NULL,
   FOREIGN KEY ("newsletter") REFERENCES "newsletter" ("id") ON DELETE CASCADE,
   FOREIGN KEY ("subscriber") REFERENCES "subscriber" ("id") ON DELETE CASCADE
-);
+);`);
+  await db.end();
+};
+
+runner();
