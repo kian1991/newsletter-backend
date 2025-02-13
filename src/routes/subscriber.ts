@@ -4,14 +4,13 @@ import { Subscriber } from '../models/subscriber';
 export const subscriber = new Hono();
 
 subscriber.get('/', async (c) => {
-  const subscribers = await Subscriber.findAll();
+  const { name } = c.req.query(); // kann string sein oder nicht defined
 
-  return c.json(
-    {
-      data: subscribers,
-    },
-    200
-  );
+  const subscribers = await Subscriber.findAll(name); // nimmt undefined entgegen oder string
+
+  return c.json({
+    data: subscribers,
+  });
 });
 subscriber.get('/:id', async (c) => {
   const { id } = c.req.param();

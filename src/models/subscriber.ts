@@ -3,11 +3,17 @@ import { getPool } from '../db/db';
 import { Subscriber as SubscriberType } from '../types';
 
 export class Subscriber {
-  static async findAll() {
-    const result = await getPool().query({
-      name: 'all-subs', // to cache the query
-      text: 'SELECT * FROM subscriber',
-    });
+  static async findAll(name: string | undefined) {
+    if (name) {
+      const result = await getPool().query({
+        name: 'all-subs', // to cache the query
+        text: 'SELECT * FROM subscriber WHERE name ILIKE $1',
+        values: [name],
+      });
+      return result.rows;
+    }
+
+    const result = await getPool().query('SELECT * FROM subscriber LIMIT 100');
     return result.rows;
   }
 
