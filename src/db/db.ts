@@ -3,6 +3,7 @@ import { Client, Pool } from 'pg';
 let client: null | Client = null;
 let pool: null | Pool = null;
 
+// Si
 export function getClient() {
   if (client) {
     return client;

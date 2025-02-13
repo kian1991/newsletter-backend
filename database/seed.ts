@@ -1,4 +1,4 @@
-import { faker, fakerDE, fakerZH_CN } from '@faker-js/faker';
+import { faker, fakerDE } from '@faker-js/faker';
 import { Newsletter, Subscriber } from '../src/types';
 import { getClient } from '../src/db/db';
 import { QueryConfig } from 'pg';

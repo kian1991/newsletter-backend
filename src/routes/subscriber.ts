@@ -13,3 +13,16 @@ subscriber.get('/', async (c) => {
     200
   );
 });
+subscriber.get('/:id', async (c) => {
+  const { id } = c.req.param();
+
+  try {
+    const subscribers = await Subscriber.findById(id);
+    return c.json(
+      {
+        data: subscribers,
+      },
+      200
+    );
+  } catch (error) {}
+});
