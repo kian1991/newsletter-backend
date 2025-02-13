@@ -1,6 +1,9 @@
 import { Hono } from 'hono';
 import { subscriber } from './routes/subscriber';
-import { ap } from '@faker-js/faker/dist/airline-D6ksJFwG';
+// load env and deps for node environment
+import { serve } from '@hono/node-server';
+import * as dotenv from 'dotenv';
+dotenv.config();
 
 const app = new Hono();
 
@@ -9,6 +12,12 @@ app.route('/subscriber', subscriber);
 
 app.get('/', (c) => {
   return c.text('Hello Hono!');
+});
+
+// to run with node
+serve({
+  fetch: app.fetch,
+  port: 8080,
 });
 
 export default {
